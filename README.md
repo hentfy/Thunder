@@ -1,78 +1,82 @@
-# Welcome to Thunder!
+Certainly! Here's a more modern and comprehensive README.md for your Lua script:
 
----
+```markdown
+<div align="center">
+  <img src="https://img.shields.io/github/license/your-username/subscription-manager?style=flat-square" alt="License">
+  <img src="https://img.shields.io/github/stars/your-username/subscription-manager?style=flat-square" alt="Stars">
+  <img src="https://img.shields.io/github/forks/your-username/subscription-manager?style=flat-square" alt="Forks">
+</div>
 
-## Introduction
+# Subscription Manager
 
-Welcome to the Thunder project! Thunder is a powerful Lua script with customizable LuraPH Macro Settings for enhanced security.
+Manage your subscriptions effortlessly with this lightweight Lua script. Keep track of your remaining time and connection details seamlessly.
 
----
+## Table of Contents
 
-## Documentation
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Reference](#api-reference)
+- [Contributing](#contributing)
+- [License](#license)
 
-### Example Script
+## Features
+
+- Retrieve connection details including Discord, username, and build version.
+- Display remaining time for your subscription in days, hours, minutes, and seconds.
+
+## Installation
+
+### Clone the Repository
+
+```sh
+git clone https://github.com/your-username/subscription-manager.git
+```
+
+### Include the Script
+
+Simply include the Lua script in your project and start fetching connection details with ease.
+
+## Usage
 
 ```lua
---[[
-    88888888888 888                             888                  
-    888     888                             888                  
-    888     888                             888                  
-    888     88888b.  888  888 88888b.   .d88888  .d88b.  888d888 
-    888     888 "88b 888  888 888 "88b d88" 888 d8P  Y8b 888P"   
-    888     888  888 888  888 888  888 888  888 8888888 888     
-    888     888  888 Y88b 888 888  888 Y88b 888 Y8b.     888     
-    888     888  888  "Y88888 888  888  "Y88888 888  "Y888888888888
-                                                                 
-                                                                 
-                                                                 
- .d8888b.                                     d8b 888            
-d88P  Y88b                                    Y8P 888            
-Y88b.                                             888            
- "Y888b.    .d88b.   .d8888b 888  888 888d888 888 888888 888  888  
-    "Y88b. d8P  Y8b d88P"    888  888 888P"   888 888    888  888  
-      "888 88888888 888      888  888 888     888 888    888  888  
-Y88b  d88P Y8b.     Y88b.    Y88b 888 888     888 Y88b.  Y88b 888  
- "Y8888P"   "Y8888   "Y8888P  "Y88888 888     888  "Y888  "Y888888888888
-                                                              888
-                                                         Y8b d88P
-                                                          "Y88P" 
-]]
-
-local thunder = thunder_fetch and thunder_fetch() or {
-    discord = "unknown",
-    username = "admin",
-    build = "beta"
-}
-
-if not LPH_OBFUSCATED then
-    LPH_NO_VIRTUALIZE = function(...) return ... end
-end
-
---[[
-    LPH_macros for anti-cracking and better organization
-]]
-
-LPH_NO_VIRTUALIZE = function(...) return ... end
-
-LPH_NO_VIRTUALIZE_FUNC = function(func)
-    return function(...)
-        local args = {...}
-        local result = LPH_NO_VIRTUALIZE(func, unpack(args))
-        return result
+-- Example usage
+local connection_info = thunder_fetch()
+if connection_info then
+    print("Discord:", connection_info.discord)
+    print("Username:", connection_info.username)
+    print("Build Version:", connection_info.build)
+    if connection_info.remaining_time then
+        print("Remaining Time:")
+        print("Days:", connection_info.remaining_time.days)
+        print("Hours:", connection_info.remaining_time.hours)
+        print("Minutes:", connection_info.remaining_time.minutes)
+        print("Seconds:", connection_info.remaining_time.seconds)
+    else
+        print("Subscription information not available.")
     end
+else
+    print("Connection information not available.")
 end
+```
 
-LPH_NO_VIRTUALIZE_FUNC_TABLE = function(table)
-    for key, value in pairs(table) do
-        if type(value) == "function" then
-            table[key] = LPH_NO_VIRTUALIZE_FUNC(value)
-        end
-    end
-    return table
-end
+## API Reference
 
---[[
-    Usage
-]]
+### `thunder_fetch()`
 
-print("Welcome back,", username , " !")
+Fetches connection details including Discord, username, build version, and remaining subscription time.
+
+#### Returns
+
+- `connection_info` (table): A table containing connection details. Returns `nil` if connection information is not available.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit issues or pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+```
+
+Remember to replace `"your-username"` in the badge URLs and clone command with your actual GitHub username or repository name. This README.md includes badges for the license, stars, and forks, as well as a table of contents for easy navigation.
