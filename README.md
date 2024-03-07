@@ -32,11 +32,5 @@ Fetches connection details including Discord, username, build version, and remai
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit issues or pull requests.
+- Hentfy
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-```
-
-Remember to replace `"your-username"` in the badge URLs and clone command with your actual GitHub username or repository name. This README.md includes badges for the license, stars, and forks, as well as a table of contents for easy navigation.
